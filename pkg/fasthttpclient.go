@@ -3,10 +3,10 @@ package pkg
 import (
 	"time"
 
-	"github.com/attapon-th/template-fiber-api/helper"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/valyala/fasthttp"
+	"github.com/wiriyamanuwong/template-fiber-api/helper"
 )
 
 // FasthttpClient Fasthttp client

@@ -3,11 +3,11 @@ package routes
 import (
 	"strings"
 
-	"github.com/attapon-th/template-fiber-api/controllers/pingctl"
-	"github.com/attapon-th/template-fiber-api/middlewares"
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
+	"github.com/wiriyamanuwong/template-fiber-api/controllers/pingctl"
+	"github.com/wiriyamanuwong/template-fiber-api/middlewares"
 )
 
 // NewRouters initializes fiber router

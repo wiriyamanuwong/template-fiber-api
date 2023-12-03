@@ -43,7 +43,7 @@ with Fiber V2 Framework
     ```bash
     mv default.env .env
     ```
-3. Change go import `github.com/attapon-th/template-fiber-api` to your go module
+3. Change go import `github.com/wiriyamanuwong/template-fiber-api` to your go module
     
     <img src="./images/chage-go-import.png" width="600px" alt="Folder Structure" />
 

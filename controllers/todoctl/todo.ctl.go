@@ -3,11 +3,11 @@ package todoctl
 import (
 	"strconv"
 
-	"github.com/attapon-th/template-fiber-api/schemas"
-	"github.com/attapon-th/template-fiber-api/services/todosrv"
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog"
 	zlog "github.com/rs/zerolog/log"
+	"github.com/wiriyamanuwong/template-fiber-api/schemas"
+	"github.com/wiriyamanuwong/template-fiber-api/services/todosrv"
 )
 
 var (

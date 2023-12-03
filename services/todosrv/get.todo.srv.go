@@ -4,9 +4,9 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/attapon-th/template-fiber-api/schemas"
 	"github.com/rs/zerolog/log"
 	"github.com/samber/lo"
+	"github.com/wiriyamanuwong/template-fiber-api/schemas"
 	"gorm.io/gorm"
 )
 

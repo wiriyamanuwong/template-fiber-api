@@ -3,9 +3,9 @@ package repositories
 import (
 	"strings"
 
-	"github.com/attapon-th/template-fiber-api/models"
-	"github.com/attapon-th/template-fiber-api/pkg"
 	"github.com/spf13/viper"
+	"github.com/wiriyamanuwong/template-fiber-api/models"
+	"github.com/wiriyamanuwong/template-fiber-api/pkg"
 )
 
 const todoFields string = "id,name,status_id,comment,complated_at,tags"

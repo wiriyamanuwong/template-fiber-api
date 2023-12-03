@@ -1,10 +1,10 @@
 package services
 
 import (
-	"github.com/attapon-th/template-fiber-api/models"
-	"github.com/attapon-th/template-fiber-api/pkg"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
+	"github.com/wiriyamanuwong/template-fiber-api/models"
+	"github.com/wiriyamanuwong/template-fiber-api/pkg"
 )
 
 // NewServices initialize global database and configuration

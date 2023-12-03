@@ -22,8 +22,8 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"github.com/attapon-th/template-fiber-api/services"
 	"github.com/spf13/cobra"
+	"github.com/wiriyamanuwong/template-fiber-api/services"
 )
 
 // migrateCmd represents the migrate command

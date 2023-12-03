@@ -3,7 +3,7 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 */
 package main
 
-import "github.com/attapon-th/template-fiber-api/cmd"
+import "github.com/wiriyamanuwong/template-fiber-api/cmd"
 
 //	@title			Swagger Example API
 //	@version		1.0

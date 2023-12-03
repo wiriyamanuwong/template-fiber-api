@@ -4,11 +4,11 @@ package routes
 import (
 	"net/url"
 
-	"github.com/attapon-th/template-fiber-api/controllers/todoctl"
-	"github.com/attapon-th/template-fiber-api/docs"
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
+	"github.com/wiriyamanuwong/template-fiber-api/controllers/todoctl"
+	"github.com/wiriyamanuwong/template-fiber-api/docs"
 )
 
 // Init initializes fiber router

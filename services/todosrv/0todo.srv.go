@@ -5,10 +5,10 @@ import (
 	"time"
 
 	"github.com/attapon-th/null"
-	"github.com/attapon-th/template-fiber-api/models"
-	"github.com/attapon-th/template-fiber-api/repositories"
-	"github.com/attapon-th/template-fiber-api/schemas"
 	"github.com/rs/zerolog/log"
+	"github.com/wiriyamanuwong/template-fiber-api/models"
+	"github.com/wiriyamanuwong/template-fiber-api/repositories"
+	"github.com/wiriyamanuwong/template-fiber-api/schemas"
 )
 
 type TodoService struct {

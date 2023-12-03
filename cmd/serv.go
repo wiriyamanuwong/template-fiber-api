@@ -4,14 +4,14 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"github.com/attapon-th/template-fiber-api/controllers"
-	"github.com/attapon-th/template-fiber-api/pkg"
-	"github.com/attapon-th/template-fiber-api/routes"
-	"github.com/attapon-th/template-fiber-api/services"
 	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/wiriyamanuwong/template-fiber-api/controllers"
+	"github.com/wiriyamanuwong/template-fiber-api/pkg"
+	"github.com/wiriyamanuwong/template-fiber-api/routes"
+	"github.com/wiriyamanuwong/template-fiber-api/services"
 )
 
 // servCmd represents the serv command
