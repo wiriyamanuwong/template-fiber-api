@@ -1,0 +1,37 @@
+version: "3.8"
+### ENV ###
+# SERVICE=myapiname
+# DOMAIN=localhost
+# PREFIX=/myapi/v1
+### END ENV ###
+services:
+  myapi:
+    image: myapi:latest
+    environment:
+      # FB_HOST: ${HOST}
+      FB_PREFIX: ${PREFIX}
+      FB_PREFORK: 4
+      FB_LOG_LEVEL: info
+
+    volumes:
+      - storage_data:/app/storage
+    deploy:
+      mode: replicated
+      replicas: 1
+      # placement:
+      #   constraints: [node.role == manager]
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.${SERVICE}.rule=Host(`${DOMAIN}`) && PathPrefix(`${PREFIX}`)"
+        - "traefik.http.routers.${SERVICE}.entrypoints=websecure"
+        - "traefik.http.routers.${SERVICE}.tls=true"
+        - "traefik.http.services.${SERVICE}.loadbalancer.server.port=8888"
+    networks:
+      - proxy
+
+volumes:
+  storage_data:
+
+networks:
+  proxy:
+    external: true

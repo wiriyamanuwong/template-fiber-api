@@ -1,0 +1,270 @@
+basePath: /
+definitions:
+  Pagination:
+    properties:
+      current_page:
+        type: integer
+      next_page:
+        type: string
+      prev_page:
+        type: string
+      size_page:
+        type: integer
+      total_pages:
+        type: integer
+      total_records:
+        type: integer
+    type: object
+  Todo:
+    properties:
+      comment:
+        type: string
+      complated_at:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      status_id:
+        type: integer
+      tags:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  TodoItem:
+    properties:
+      comment:
+        type: string
+      complated_at:
+        type: string
+      name:
+        type: string
+      status_id:
+        type: integer
+      tags:
+        type: string
+    type: object
+  TodoOne:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/Todo'
+      message:
+        type: string
+      ok:
+        type: boolean
+    type: object
+  Todos:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/Todo'
+        type: array
+      message:
+        type: string
+      ok:
+        type: boolean
+      pagination:
+        $ref: '#/definitions/Pagination'
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8888
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: get todos
+      parameters:
+      - description: Filter  ID
+        in: query
+        name: id
+        type: string
+      - description: Filter name
+        in: query
+        name: name
+        type: string
+      - description: Todo id status
+        in: query
+        name: status_id
+        type: integer
+      - default: 1
+        description: Page number of Todo Data
+        in: query
+        name: _page
+        type: integer
+      - default: 10
+        description: Limit Todo Data
+        in: query
+        name: _limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Todos'
+        default:
+          description: not success
+          schema:
+            $ref: '#/definitions/Todos'
+      summary: Show todos
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: create todo
+      parameters:
+      - description: Todo Item
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/TodoItem'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TodoOne'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/TodoOne'
+      summary: Create Todo
+      tags:
+      - todos
+  /todos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Update todo by ID
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TodoOne'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/TodoOne'
+      summary: Delete Todo by ID
+      tags:
+      - todos
+    get:
+      consumes:
+      - application/json
+      description: get todos by id
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TodoOne'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/TodoOne'
+      summary: Show todo by id
+      tags:
+      - todos
+    patch:
+      consumes:
+      - application/json
+      description: Update todo by ID
+      parameters:
+      - description: Todo Item
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/TodoItem'
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TodoOne'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/TodoOne'
+      summary: Update Todo some data
+      tags:
+      - todos
+    put:
+      consumes:
+      - application/json
+      description: Update todo by ID
+      parameters:
+      - description: Todo Item
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/TodoItem'
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TodoOne'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/TodoOne'
+      summary: Update Todo
+      tags:
+      - todos
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

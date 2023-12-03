@@ -1,0 +1,71 @@
+# https://taskfile.dev
+
+version: "3"
+
+dotenv:
+  - .env
+vars:
+  APP_NAME: template_backend_api
+  APP_BUILD: 1
+  APP_TS:
+    sh: date -Is || echo "2023-10-04T12:43:08+07:00"
+  GO_MODULE:
+    sh: go list || echo "{{.APP_NAME}}"
+  GO_LDFLAGS: |
+    --ldflags="-s -w \
+    -X '{{.GO_MODULE}}/cmd.AppName={{.APP_NAME}}' \
+    -X '{{.GO_MODULE}}/cmd.Build={{.APP_BUILD}}' \
+    -X '{{.GO_MODULE}}/cmd.TS={{.APP_TS}}'" \
+  DOCKER_IMAGE: "{{.APP_NAME}}"
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+    silent: true
+
+  dev:
+    cmds:
+      - go run  {{.GO_LDFLAGS}}  main.go serv
+  migrate:
+    cmds:
+      - go run  {{.GO_LDFLAGS}}  main.go migrate
+
+  version:
+    cmds:
+      - go run  {{.GO_LDFLAGS}}  main.go version
+  swag:
+    cmds:
+      - swag fmt
+      - swag init
+  mod:
+    cmds:
+      - go mod download
+      - go mod tidy
+      - go mod vendor
+
+  increase-build-version:
+    cmds:
+      - |
+        sed -i "s/^  APP_BUILD: .*$/  APP_BUILD: $(({{.APP_BUILD}}+1))/" Taskfile.yaml
+        echo "APP_BUILD: $(({{.APP_BUILD}}+1))"
+
+  build:
+    cmds:
+      - mkdir -p build
+      - |
+        CGO_ENABLED=0 GOOS=linux go build \
+        -a {{.GO_LDFLAGS}} \
+        -o ./build/{{.APP_NAME}} main.go
+
+  docker-build:
+    dir: ./docker
+    cmds:
+      - task increase-build-version
+      - task build
+      - |
+        docker build --build-arg APP_NAME={{.APP_NAME}} \
+        --tag {{.DOCKER_IMAGE}}:latest \
+        .
+  docker-push:
+    - docker push {{.DOCKER_IMAGE}}:latest
